@@ -1,7 +1,7 @@
 #' Get city boundary from GADM
 #'
 #' @param city Character. City name (e.g. "Aachen"). Only for German cities.
-#' @return sf object with city boundary in WGS84
+#' @return sf object of the city boundary
 #' @export
 get_city_boundary <- function(city) {
   
