@@ -48,7 +48,8 @@ get_hotcoolspots <- function(lst_result, hot_quantile = 0.90, cold_quantile = 0.
       pad_x = unit(0.6, "cm"), pad_y = unit(0.7, "cm"),
       style = "ticks"
     ) +
-    labs(title = paste0("Hot- and Coldspot Analysis – ", city)) +
+    labs(title = paste0("Hot- and Coldspot Analysis – ", city),
+         subtitle = (date)) +
     theme_minimal(base_size = 12) +
     theme(
       panel.background = element_rect(fill = "#E5E5E5", color = NA),
