@@ -1,6 +1,10 @@
-#' Get city boundary from GADM
+#' @title Gets a cities boundary
+#' @description Retrieves the cities boundary as a sf polygon using GADM
 #'
 #' @param city Character. City name (e.g. "Aachen"). As far as now only for German cities.
+#' @examples 
+#' get_city_boundary("Aachen")
+#' 
 #' @return sf object of the city boundary
 #' @export
 get_city_boundary <- function(city) {
