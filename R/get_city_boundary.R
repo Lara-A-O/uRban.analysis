@@ -1,6 +1,6 @@
 #' Get city boundary from GADM
 #'
-#' @param city Character. City name (e.g. "Aachen"). Only for German cities.
+#' @param city Character. City name (e.g. "Aachen"). As far as now only for German cities.
 #' @return sf object of the city boundary
 #' @export
 get_city_boundary <- function(city) {
