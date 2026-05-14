@@ -1,9 +1,9 @@
 Package: uRban.analysis
-Title: What the Package Does (One Line, Title Case)
+Title: Anaylses of Urban Topics
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+    person("Lara", "Alves Oeltjebruns", , "lara.alves-oeltjebruns@stud-mail.uni-wuerzburg.de", role = c("aut", "cre"))
+Description: The package aims to support decision-makers with ready-to-use analyses of urban phenomena, especially urban heat.
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8

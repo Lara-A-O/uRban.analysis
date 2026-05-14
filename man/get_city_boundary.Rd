@@ -7,10 +7,10 @@
 get_city_boundary(city)
 }
 \arguments{
-\item{city}{Character. City name (e.g. "Aachen"). Only for German cities.}
+\item{city}{Character. City name (e.g. "Aachen"). As far as now only for German cities.}
 }
 \value{
-sf object with city boundary in WGS84
+sf object of the city boundary
 }
 \description{
 Get city boundary from GADM
