@@ -12,6 +12,8 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
+<img src="man/figures/urban_analysis_logo.png" align="right" height="200" />
+
 
 # uRban.analysis
 
