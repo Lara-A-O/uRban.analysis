@@ -7,6 +7,7 @@
 #' 
 #' @return sf object of the city boundary
 #' @export
+#' 
 get_city_boundary <- function(city) {
   
   de <- geodata::gadm("DEU", level = 3, path = tempdir())
