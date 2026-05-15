@@ -1,3 +1,15 @@
+#' @title Plots the LST boxplots per LULC Class 
+#' @description Creates a plot of the temperature distribution of the LULC Classes present in the study area using boxplots
+#' @param lulc_data List: Result of the function get_LULC()
+#' @param lst_result List: Result of the function get_LST()
+#' @examples 
+#' \dontrun{
+#' statistics_LULC_LST(lulc_data, lst_result)
+#' }
+#' @return Boxplots of the temperature of the LULC classes (ggplot2 -object)
+#' @export
+
+
 statistics_LULC_LST <- function(lulc_data, lst_result) {
 
   clc_masked         <- lulc_data$clc_masked

@@ -1,3 +1,17 @@
+#' @title Plots the Land Surface Temperature 
+#' @description Creates a ready-to-use map of the Land Surface Temperature at the given date, based on the output of `get_LST()`
+#'
+#' @param lst_result List - Result of the function get_LST() containing the LST, the boundary, the city name and the acquisition date 
+#' @examples 
+#' \dontrun{
+#' LST_plotted (lst_result)}
+#' 
+#' @return Plot of the Land Surface Temperature 
+#' @export
+
+
+
+
 LST_plotted <- function(lst_result) {
   LST      <- lst_result$LST
   boundary <- lst_result$boundary

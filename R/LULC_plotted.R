@@ -1,3 +1,17 @@
+#' @title Plots the Land Use / Land Cover of the city based on the CORINE Dataset 
+#' @param clc_path Character: Path to the .tif file containing the CORINE LULC dataset 
+#' @param city Character: Name of the city that is being analyzed
+#' @examples 
+#' \dontrun{
+#'LULC_plotted( 
+#' clc_path = "C:/Users/LaraO/EAGLE_Master/1_Semester/New R-Package/U2018_CLC2018_V2020_20u1.tif",
+#' city = "Aachen")
+#' }
+#' @return Plot of the LULC of the city based on ggplot2
+#' @export
+
+
+
 LULC_plotted <- function(clc_path, city){
   clc <- terra::rast(clc_path)
 

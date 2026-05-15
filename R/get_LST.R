@@ -1,13 +1,17 @@
 #' @title Gets the Land Surface Temperature 
 #' @description Calculates the Land Surface Temperature within the given boundary based on a Landsat Scene. 
-#' Used Formula: LST = ST_B10 x 0,00341802 +149 -273,15.
-#' 0,00341802 = Scaling Factor 149= Off-Set Value -273,15 = Kelvin to Celcius
+#' Used Formula: `LST = ST_B10 x 0,00341802 +149 -273,15`
+#' Where
+#' 
+#' -`0,00341802` = Scaling Factor 
+#' -`149`= Off-Set Value 
+#' `-273,15` = Kelvin to Celcius
 #'
 #' @param st_b10_path Character Path to the Landsat Thermal Band Tif
 #' @param city Character Name of the city that is being analyzed
 #' @param date Date Acquisition Date of the Landsat Scene 
 #' @examples 
-#' get_LST <- (
+#' lst_result <- get_LST(
 #' st_b10_path = "C:/Users/LaraO/EAGLE_Master/1_Semester/New R-Package/LC08_L2SP_197025_20250620_20250627_02_T1_ST_B10.TIF",
 #' city = "Aachen", 
 #' date = as.Date(20-06-2025) )

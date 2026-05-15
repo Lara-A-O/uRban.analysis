@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_city_boundary.R
 \name{get_city_boundary}
 \alias{get_city_boundary}
-\title{Get city boundary from GADM}
+\title{Gets a cities boundary}
 \usage{
 get_city_boundary(city)
 }
@@ -13,5 +13,9 @@ get_city_boundary(city)
 sf object of the city boundary
 }
 \description{
-Get city boundary from GADM
+Retrieves the cities boundary as a sf polygon using GADM
+}
+\examples{
+get_city_boundary("Aachen")
+
 }

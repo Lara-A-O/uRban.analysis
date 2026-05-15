@@ -1,8 +1,30 @@
+#' @title Calculates and Plots the hot and cool spots 
+#' @description Calculates the hottest and coldest pixels of the city and plots them in a ready-to-use map so areas to cool off and  areas where action is needed can be identified 
+#'
+#' @param lst_result List - Result of the function get_LST() containing the LST, the boundary, the city name and the acquisition date 
+#' @param hot_quantile Numeric - Upper quantile treshold to classify hotspots (by default 0.90 = the hottest 10% are being considered)
+#' @param cold_quantile Numeric - Lower quantile treshold to classify coldspots (by default = 0.10 = the coldest 10% are being considered)
+#' @examples 
+#' \dontrun{
+#' get_hotcoolspots(
+#' lst_result= lst_result, 
+#' hot_quantile= 0.95,
+#' cold_quantile= 0.05)}
+#' 
+#' @return Plot of Hot and Cool Spots in the given city at the acquisition date 
+#' @export
+
+
+
+
+
+
 get_hotcoolspots <- function(lst_result, hot_quantile = 0.90, cold_quantile = 0.10) {
 
   LST      <- lst_result$LST
   boundary <- lst_result$boundary
   city     <- lst_result$city
+  date     <- lst_result$date
 
 
   hotspot   <- terra::global(LST, fun = quantile, probs = hot_quantile, na.rm = TRUE)[1,1]
