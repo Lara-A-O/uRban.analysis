@@ -12,12 +12,28 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
-<img src="man/figures/urban_analysis_logo.png" align="right" height="200" />
 
+<img src="man/figures/urban_analysis_logo.png" align="right" height="200"/>
 
 # uRban.analysis
 
 This package aims to support decision-makers with ready-to-use analyses of urban phenomena, especially urban heat.
+
+## Requirements
+
+This package requires following packages
+
+\-`dplyr` -`geodata` -`ggplot2` -`ggspatial` -`sf` -`terra` -`tidyterra`
+
+```{r}
+#Check if packages are missing and install automatically 
+packages_needed <- c("terra", "sf", "ggplot2", "dplyr", "tidyterra", "geodata", "ggspatial")
+not_installed <- packages_needed[!(packages_needed %in% installed.packages () [,"Package"])]
+if(length(not_installed)) install.packages(not_installed)
+
+print(paste(length(not_installed), "package had to be installed."))
+
+```
 
 ## Installation
 
@@ -29,6 +45,17 @@ Package installation can be done directly by calling:
 
 pak::pak("Lara-A-O/uRban.analysis")
 ```
+
+## Functions
+
+| Function | Short Description |
+|------------------------------|------------------------------------------|
+| `get_city_boundary()` | Gets the boundary of a german city |
+| `get_LST()` | Calculates the Land Surface Temperature (LST) for the city out of a given Landsat Acquisition |
+| `LST_plotted()` | Creates a ready-to-use map of the LST |
+| `get_LULC()` | Prepares the corine dataset for the next steps |
+| `LULC_plotted()` | Creates a ready-to-use map of the Land Use/Land Cover (LULC) of the city |
+| `statistics_LULC_LST()` | Creates boxplots of the temperature distribution within the LULC Classes |
 
 ## Example
 
