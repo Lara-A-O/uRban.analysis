@@ -21,7 +21,6 @@ not_installed <- packages_needed[!(packages_needed %in% installed.packages () [,
 if(length(not_installed)) install.packages(not_installed)
 
 print(paste(length(not_installed), "package had to be installed."))
-#> [1] "0 package had to be installed."
 ```
 
 ## Installation
@@ -60,20 +59,7 @@ Load the `uRban.analysis`-Package and the dependent packages:
 library(uRban.analysis)
 
 library(dplyr)
-#> Warning: package 'dplyr' was built under R version 4.5.3
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:terra':
-#> 
-#>     intersect, union
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
 library(geodata)
-#> Warning: package 'geodata' was built under R version 4.5.3
 library(ggplot2)
 library(ggspatial)
 library(sf)
@@ -96,15 +82,6 @@ Aachen <- get_city_boundary("Aachen")
 #To check if the right boundary is being produced use: 
 
 print(Aachen)
-#> Simple feature collection with 1 feature and 16 fields
-#> Geometry type: POLYGON
-#> Dimension:     XY
-#> Bounding box:  xmin: 5.974862 ymin: 50.64436 xmax: 6.216913 ymax: 50.85735
-#> Geodetic CRS:  WGS 84
-#>           GID_3 GID_0 COUNTRY    GID_1              NAME_1 NL_NAME_1       GID_2              NAME_2 NL_NAME_2 NAME_3 VARNAME_3
-#> 1 DEU.10.47.1_1   DEU Germany DEU.10_1 Nordrhein-Westfalen      <NA> DEU.10.47_1 Städteregion Aachen      <NA> Aachen      <NA>
-#>   NL_NAME_3                      TYPE_3    ENGTYPE_3      CC_3 HASC_3                       geometry
-#> 1      <NA> Gemeinschaftsfreie Gemeinde Municipality 053340002   <NA> POLYGON ((6.042582 50.72204...
 ```
 
 #### Getting the Land Surface Temperature with `get_LST()`
@@ -113,19 +90,17 @@ Now that an SF object for the desired study area is available, the
 ST_B10 image is loaded, cropped to fit the study area, and the LST ist
 calculated with the `get_LST()` function
 
-\*\*\* The `ST_B10` band must be a Landsat Collection 2 Level-2 thermal
-band, as the formula applies to the official USGS scaling factor and
-offset\*\*\*
+**The `ST_B10` band must be a Landsat Collection 2 Level-2 thermal band,
+as the formula applies to the official USGS scaling factor and offset**
 
 ``` r
 lst_result <- get_LST(
  st_b10_path = "C:/Users/LaraO/EAGLE_Master/1_Semester/New R-Package/LC08_L2SP_197025_20250620_20250627_02_T1_ST_B10.TIF",
  city = "Aachen", 
  date = as.Date(20-06-2025) )
-#> |---------|---------|---------|---------|=========================================                                          
 ```
 
-### Create a ready-to-use Map of the Land Surface Temperature
+### Create a ready-to-use Map of the Land Surface Temperature with `LST_plotted()`
 
 Maps of the Land Surface Temperature can be useful to get an overview of
 the temperature distribution in the city. With the function
@@ -136,12 +111,10 @@ for this function is the result of `get_LST()`
 LST_plotted (lst_result)
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
-
-\*\*\* Output of `LST_plotted()`\*\*
+\*\*\* Output of `LST_plotted()`\*\*\*
 <img src="man/figures/outputs/LST_plotted.png" width="700"/>
 
-### Create a ready-to-use map of Hot and Cool Spots in the City
+### Create a ready-to-use map of Hot and Cool Spots in the City with `get_hotcoolspots()`
 
 In order to make recommendations for action, it is necessary to identify
 temperature extrema. The coldest areas can be potential places to cool
@@ -149,17 +122,56 @@ off, the hottest places should be examined for their potential to reduce
 temperatures. The function `get_hotcoolspots` creates such a map based
 on `get_LST`
 
-\***Output of `get_hotcoolspots()`**
+``` r
+
+get_hotcoolspots(
+ lst_result= lst_result, 
+ hot_quantile= 0.95,
+ cold_quantile= 0.05)
+
+# The numbers for the hot and cold quantile can be adjusted as desired, depending on which extreme range is to be considered. By default the highest and coldest 10% are being considered. 
+```
+
+**Output of `get_hotcoolspots()`**
 
 <img src="man/figures/outputs/extrema.png" width="700"/>
 
-#### Get the information about the Land Use and Land Cover of the city
+#### Get the information about the Land Use and Land Cover of the city with `get_LULC()`
 
 A Land Use and Land Cover (LULC) Map can be useful to provide some
 context in regards of urban topics f.ex. heat. The Funktion `get_LULC()`
 serves as a preliminary step in the creation of a LULC map and further
-analysises. The \[CORINE Land Cover dataset\]
+analysises. The $$CORINE Land Cover dataset$$
 (<https://land.copernicus.eu/en/products/corine-land-cover>) serves as
 the basis
 
-### Create a ready-to-use map of the Land Use and Land Cover of the city
+``` r
+lulc_result <- get_LULC(
+ path_to_CORINE = "C:/Users/LaraO/EAGLE_Master/1_Semester/New R-Package/U2018_CLC2018_V2020_20u1.tif")
+ city = "Aachen"
+```
+
+### Create a ready-to-use map of the Land Use and Land Cover of the city with `LULC_plotted()`
+
+The function `LULC_plotted()`creates a map of the LULC present in the
+city based on the previous function `get_LULC()`
+
+``` r
+LULC_plotted( 
+ clc_path = "C:/Users/LaraO/EAGLE_Master/1_Semester/New R-Package/U2018_CLC2018_V2020_20u1.tif",
+ city = "Aachen")
+```
+
+### Analyze the Land Surface Temperature per Land Cover Class with `statistics_LULC_LST()`
+
+By analyzing the land surface temperature per Land Cover Class decision
+makers can identify where targeted adaption measures will have the
+greatest impact. The function `statistics_LULC_LST()` based on the
+results of `get_LULC()` and `get_LST()`creates on overview of the
+temperature distribution per class using boxplots.
+
+``` r
+statistics_LULC_LST(lulc_data, lst_result)
+```
+
+## Restrictions and Disclaimer
