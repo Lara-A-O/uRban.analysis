@@ -14,7 +14,7 @@
 #' lst_result <- get_LST(
 #' st_b10_path = "C:/Users/LaraO/EAGLE_Master/1_Semester/New R-Package/LC08_L2SP_197025_20250620_20250627_02_T1_ST_B10.TIF",
 #' city = "Aachen", 
-#' date = as.Date(20-06-2025) )
+#' date = as.Date("2025-06-20") )
 #' 
 #' @return List with four elements: The calculated LST, the city name, the date and the city boundary
 #' @export

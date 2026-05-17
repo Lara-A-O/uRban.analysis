@@ -1,3 +1,33 @@
+#' @title Gets the Land Use and Land Cover Classification 
+#' 
+#' @description Loads the CORINE Land Cover raster and masks it to the boundaries of the specified city. A lookup table is created to extracr the 44 CORINE land cover classes from the dataset.
+#' 
+#' @param path_to_CORINE - Character: Path to the CORINE Land Cover raster (.tif)
+#' @param city           - Character: Name of the city that is being analyzed
+#' 
+#' @examples 
+#' #Create the list 
+#' lulc_result <- get_LULC(
+#'  path_to_CORINE = "C:/Users/LaraO/EAGLE_Master/1_Semester/New R-Package/U2018_CLC2018_V2020_20u1.tif")
+#'  city = "Aachen"
+#' 
+#' #Access the masked raster
+#' lulc_result$clc_masked
+#' 
+#' #See which land cover classes are present within the city boundary 
+#' lulc_result$clc_lookup_present
+#' 
+#' @return List with four elements: The masked raster, the look table, the city name and the city boundary
+#' 
+#' @export 
+#' 
+#' 
+
+
+
+
+
+
 get_LULC <- function(path_to_CORINE, city) {
 
 clc      <- terra::rast(path_to_corine)

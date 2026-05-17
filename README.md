@@ -47,35 +47,119 @@ pak::pak("Lara-A-O/uRban.analysis")
 | `LULC_plotted()` | Creates a ready-to-use map of the Land Use/Land Cover (LULC) of the city |
 | `statistics_LULC_LST()` | Creates boxplots of the temperature distribution within the LULC Classes |
 
-## Example
+## Example Workflow
 
-This is a basic example which shows you how to solve a common problem:
+This is a example workflow on how to use the uRban.analysis package:
+
+#### Getting the package started
+
+Load the `uRban.analysis`-Package and the dependent packages:
 
 ``` r
+
 library(uRban.analysis)
-## basic example code
+
+library(dplyr)
+#> Warning: package 'dplyr' was built under R version 4.5.3
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:terra':
+#> 
+#>     intersect, union
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
+library(geodata)
+#> Warning: package 'geodata' was built under R version 4.5.3
+library(ggplot2)
+library(ggspatial)
+library(sf)
+library(terra)
+library(tidyterra)
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+#### Getting the city boundary with `get_city_boundary()`
+
+The first step is to define the area of interest. You have the option of
+using your own sf object or using the `get_city_boundary` function based
+on the GADM Database to retrieve the boundaries of a German city.
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+#Example on how to use "get_city_boundary()"
+
+Aachen <- get_city_boundary("Aachen")
+
+#If the output is unknown the following output is generated: "City not found in GADM database:"
+#To check if the right boundary is being produced use: 
+
+print(Aachen)
+#> Simple feature collection with 1 feature and 16 fields
+#> Geometry type: POLYGON
+#> Dimension:     XY
+#> Bounding box:  xmin: 5.974862 ymin: 50.64436 xmax: 6.216913 ymax: 50.85735
+#> Geodetic CRS:  WGS 84
+#>           GID_3 GID_0 COUNTRY    GID_1              NAME_1 NL_NAME_1       GID_2              NAME_2 NL_NAME_2 NAME_3 VARNAME_3
+#> 1 DEU.10.47.1_1   DEU Germany DEU.10_1 Nordrhein-Westfalen      <NA> DEU.10.47_1 Städteregion Aachen      <NA> Aachen      <NA>
+#>   NL_NAME_3                      TYPE_3    ENGTYPE_3      CC_3 HASC_3                       geometry
+#> 1      <NA> Gemeinschaftsfreie Gemeinde Municipality 053340002   <NA> POLYGON ((6.042582 50.72204...
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this.
+#### Getting the Land Surface Temperature with `get_LST()`
 
-You can also embed plots, for example:
+Now that an SF object for the desired study area is available, the
+ST_B10 image is loaded, cropped to fit the study area, and the LST ist
+calculated with the `get_LST()` function
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
+\*\*\* The `ST_B10` band must be a Landsat Collection 2 Level-2 thermal
+band, as the formula applies to the official USGS scaling factor and
+offset\*\*\*
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+``` r
+lst_result <- get_LST(
+ st_b10_path = "C:/Users/LaraO/EAGLE_Master/1_Semester/New R-Package/LC08_L2SP_197025_20250620_20250627_02_T1_ST_B10.TIF",
+ city = "Aachen", 
+ date = as.Date(20-06-2025) )
+#> |---------|---------|---------|---------|=========================================                                          
+```
+
+### Create a ready-to-use Map of the Land Surface Temperature
+
+Maps of the Land Surface Temperature can be useful to get an overview of
+the temperature distribution in the city. With the function
+`LST_plotted()` such a map can be created in seconds. The required input
+for this function is the result of `get_LST()`
+
+``` r
+LST_plotted (lst_result)
+```
+
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+
+\*\*\* Output of `LST_plotted()`\*\*
+<img src="man/figures/outputs/LST_plotted.png" width="700"/>
+
+### Create a ready-to-use map of Hot and Cool Spots in the City
+
+In order to make recommendations for action, it is necessary to identify
+temperature extrema. The coldest areas can be potential places to cool
+off, the hottest places should be examined for their potential to reduce
+temperatures. The function `get_hotcoolspots` creates such a map based
+on `get_LST`
+
+\***Output of `get_hotcoolspots()`**
+
+<img src="man/figures/outputs/extrema.png" width="700"/>
+
+#### Get the information about the Land Use and Land Cover of the city
+
+A Land Use and Land Cover (LULC) Map can be useful to provide some
+context in regards of urban topics f.ex. heat. The Funktion `get_LULC()`
+serves as a preliminary step in the creation of a LULC map and further
+analysises. The \[CORINE Land Cover dataset\]
+(<https://land.copernicus.eu/en/products/corine-land-cover>) serves as
+the basis
+
+### Create a ready-to-use map of the Land Use and Land Cover of the city
