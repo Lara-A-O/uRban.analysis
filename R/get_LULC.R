@@ -23,11 +23,6 @@
 #' 
 #' 
 
-
-
-
-
-
 get_LULC <- function(path_to_CORINE, city) {
 
 clc      <- terra::rast(path_to_CORINE)

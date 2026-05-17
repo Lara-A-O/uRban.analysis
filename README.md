@@ -100,7 +100,7 @@ lst_result <- get_LST(
  date = as.Date(20-06-2025) )
 ```
 
-### Create a ready-to-use Map of the Land Surface Temperature with `LST_plotted()`
+#### Create a ready-to-use Map of the Land Surface Temperature with `LST_plotted()`
 
 Maps of the Land Surface Temperature can be useful to get an overview of
 the temperature distribution in the city. With the function
@@ -111,10 +111,10 @@ for this function is the result of `get_LST()`
 LST_plotted (lst_result)
 ```
 
-\*\*\* Output of `LST_plotted()`\*\*\*
+**Output of `LST_plotted()`**
 <img src="man/figures/outputs/LST_plotted.png" width="700"/>
 
-### Create a ready-to-use map of Hot and Cool Spots in the City with `get_hotcoolspots()`
+#### Create a ready-to-use map of Hot and Cool Spots in the City with `get_hotcoolspots()`
 
 In order to make recommendations for action, it is necessary to identify
 temperature extrema. The coldest areas can be potential places to cool
@@ -129,7 +129,8 @@ get_hotcoolspots(
  hot_quantile= 0.95,
  cold_quantile= 0.05)
 
-# The numbers for the hot and cold quantile can be adjusted as desired, depending on which extreme range is to be considered. By default the highest and coldest 10% are being considered. 
+# The numbers for the hot and cold quantile can be adjusted as desired, depending on which extreme range is to be considered. 
+# By default the highest and coldest 10% are being considered. 
 ```
 
 **Output of `get_hotcoolspots()`**
@@ -151,7 +152,7 @@ lulc_result <- get_LULC(
  city = "Aachen"
 ```
 
-### Create a ready-to-use map of the Land Use and Land Cover of the city with `LULC_plotted()`
+#### Create a ready-to-use map of the Land Use and Land Cover of the city with `LULC_plotted()`
 
 The function `LULC_plotted()`creates a map of the LULC present in the
 city based on the previous function `get_LULC()`
@@ -162,7 +163,10 @@ LULC_plotted(
  city = "Aachen")
 ```
 
-### Analyze the Land Surface Temperature per Land Cover Class with `statistics_LULC_LST()`
+**Output of `LULC_plotted()`**
+<img src="man/figures/outputs/LULC_plotted.png" width="700"/>
+
+#### Analyze the Land Surface Temperature per Land Cover Class with `statistics_LULC_LST()`
 
 By analyzing the land surface temperature per Land Cover Class decision
 makers can identify where targeted adaption measures will have the
@@ -174,4 +178,7 @@ temperature distribution per class using boxplots.
 statistics_LULC_LST(lulc_data, lst_result)
 ```
 
-## Restrictions and Disclaimer
+**Output of `statistics_LULC_LST()`**
+<img src="man/figures/outputs/LST_by_LULC.png" width="700"/>
+
+### Restrictions and Disclaimer
