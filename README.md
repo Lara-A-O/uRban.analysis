@@ -1,10 +1,9 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-<img src="man/figures/urban_analysis_logo.png" align="right" height="200"/>
-
 # uRban.analysis
 
+<img src="man/figures/urban_analysis_logo.png" align="right" height="200"/>
 This package aims to support decision-makers with ready-to-use analyses
 of urban phenomena, especially urban heat.
 
