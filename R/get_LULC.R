@@ -8,7 +8,7 @@
 #' @examples 
 #' #Create the list 
 #' lulc_result <- get_LULC(
-#'  path_to_CORINE = "C:/Users/LaraO/EAGLE_Master/1_Semester/New R-Package/U2018_CLC2018_V2020_20u1.tif")
+#'  path_to_CORINE = "C:/Users/LaraO/EAGLE_Master/1_Semester/New R-Package/U2018_CLC2018_V2020_20u1.tif",
 #'  city = "Aachen"
 #' 
 #' #Access the masked raster
@@ -30,7 +30,7 @@
 
 get_LULC <- function(path_to_CORINE, city) {
 
-clc      <- terra::rast(path_to_corine)
+clc      <- terra::rast(path_to_CORINE)
   
   boundary <- get_city_boundary(city)
 
