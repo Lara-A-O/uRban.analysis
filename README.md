@@ -22,7 +22,7 @@ measures f.ex. green roofs.
 
 This R-Package is designed to give decision-makers the ability to
 conduct a quick analysis of their city. Using a previously selected
-Lansat thermal image the Land Surface Temperature is plotted within the
+Landsat thermal image the Land Surface Temperature is plotted within the
 city boundaries. Furthermore, hotspots and coldspots can be identified.
 In addition the Land Cover of the city can be retreived and plotted
 based on the CORINE land cover dataset. So that the temperature
@@ -49,8 +49,8 @@ Additionally packages requires following data to run all the functions:
 - ‘ST_B10 surface temperature product’ (Landsat Collection 2 Level-2)
   that covers the entire study area - can be downloaded via the [USGS
   Earthexplorer](https://earthexplorer.usgs.gov/)
-- \`CORINE Land Cover dataset’ - can be downloaded via the [Land
-  Monitoring
+- \`CORINE Land Cover dataset’ - can be downloaded via the [Copernicus
+  Land Monitoring
   Service](https://land.copernicus.eu/en/products/corine-land-cover/clc2018)
 
 ## Installation

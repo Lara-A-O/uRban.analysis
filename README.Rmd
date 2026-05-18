@@ -21,7 +21,7 @@ This package aims to support decision-makers with ready-to-use analyses of urban
 
 Deaths in connections with heat are no longer a rarity, as the heat waves of recent years have shown. In the summer of 2022 ca. 62.862 people have died because of the heat all over europe (Ballester et al. 2023:1857). With an global temperature increase of 1.5°C 30.000 heat related deaths can be expecected in Europe (Bednar-Friedl et al. 2023:1860). The health effects of heat waves are particulary severe in cities. Cities have a high degree of soil sealing, often with little vegetation and high building density. For climate-resilient urban planning, it is important to know the heat distribution of cities in order to be able to conteract areas of intense heat troogh appropiate measures f.ex. green roofs.
 
-This R-Package is designed to give decision-makers the ability to conduct a quick analysis of their city. Using a previously selected Lansat thermal image the Land Surface Temperature is plotted within the city boundaries. Furthermore, hotspots and coldspots can be identified. In addition the Land Cover of the city can be retreived and plotted based on the CORINE land cover dataset. So that the temperature distribution per Land Cover Class can be detected.
+This R-Package is designed to give decision-makers the ability to conduct a quick analysis of their city. Using a previously selected Landsat thermal image the Land Surface Temperature is plotted within the city boundaries. Furthermore, hotspots and coldspots can be identified. In addition the Land Cover of the city can be retreived and plotted based on the CORINE land cover dataset. So that the temperature distribution per Land Cover Class can be detected.
 
 ## Requirements
 
@@ -49,7 +49,7 @@ print(paste(length(not_installed), "package had to be installed."))
 Additionally packages requires following data to run all the functions: 
 
 - 'ST_B10 surface temperature product' (Landsat Collection 2 Level-2) that covers the entire study area - can be downloaded via the [USGS Earthexplorer](https://earthexplorer.usgs.gov/)
-- `CORINE Land Cover dataset' - can be downloaded via the [Land Monitoring Service](https://land.copernicus.eu/en/products/corine-land-cover/clc2018)
+- `CORINE Land Cover dataset' - can be downloaded via the [Copernicus Land Monitoring Service](https://land.copernicus.eu/en/products/corine-land-cover/clc2018)
 
 ## Installation
 
