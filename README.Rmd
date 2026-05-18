@@ -16,7 +16,12 @@ knitr::opts_chunk$set(
 # uRban.analysis
 
 <img src="man/figures/urban_analysis_logo.png" align="right" height="200"/>
+
 This package aims to support decision-makers with ready-to-use analyses of urban phenomena, especially urban heat.
+
+Deaths in connections with heat are no longer a rarity, as the heat waves of recent years have shown. In the summer of 2022 ca. 62.862 people have died because of the heat all over europe (Ballester et al. 2023:1857). With an global temperature increase of 1.5°C 30.000 heat related deaths can be expecected in Europe (Bednar-Friedl et al. 2023:1860). The health effects of heat waves are particulary severe in cities. Cities have a high degree of soil sealing, often with little vegetation and high building density. For climate-resilient urban planning, it is important to know the heat distribution of cities in order to be able to conteract areas of intense heat troogh appropiate measures f.ex. green roofs.
+
+This R-Package is designed to give decision-makers the ability to conduct a quick analysis of their city. Using a previously selected Lansat thermal image the Land Surface Temperature is plotted within the city boundaries. Furthermore, hotspots and coldspots can be identified. In addition the Land Cover of the city can be retreived and plotted based on the CORINE land cover dataset. So that the temperature distribution per Land Cover Class can be detected.
 
 ## Requirements
 
@@ -155,8 +160,7 @@ LULC_plotted(
  city = "Aachen")
 ```
 
-**Output of `LULC_plotted()`**
-<img src="man/figures/outputs/LULC_plotted.png" width="700"/>
+**Output of `LULC_plotted()`** <img src="man/figures/outputs/LULC_plotted.png" width="700"/>
 
 #### Analyze the Land Surface Temperature per Land Cover Class with `statistics_LULC_LST()`
 
@@ -166,8 +170,10 @@ By analyzing the land surface temperature per Land Cover Class decision makers c
 statistics_LULC_LST(lulc_data, lst_result)
 ```
 
-**Output of `statistics_LULC_LST()`**
-<img src="man/figures/outputs/LST_by_LULC.png" width="700"/>
-
+**Output of `statistics_LULC_LST()`** <img src="man/figures/outputs/LST_by_LULC.png" width="700"/>
 
 ### Restrictions and Disclaimer
+
+-   In the R-Package the Land Surface Temperature serves as a proxy for heat. It is important to mention that health effects are caused by the air temperature in relation of other factors such as humidity, wind but also age. The assumption that the LST can be used to estimate the heat exposure is very simplified also because the used Landsat image is captured in the morning and therefore does not represent the highest temperatures in the afternoon as well as temperatures at night. Nevertheless, the LST may provide a starting point for further research.
+
+- Because the CORINE dataset is used, the package is limited to European cities. However, the principle of the functions can be adapted to national LULC Classifications outside of Europe. 
