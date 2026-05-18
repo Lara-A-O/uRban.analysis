@@ -30,18 +30,28 @@ distribution per Land Cover Class can be detected.
 
 ## Requirements
 
-This package requires following packages
+This package requires following packages:
 
 \-`dplyr` -`geodata` -`ggplot2` -`ggspatial` -`sf` -`terra` -`tidyterra`
+-`osmdata`
 
 ``` r
 #Check if packages are missing and install automatically 
-packages_needed <- c("terra", "sf", "ggplot2", "dplyr", "tidyterra", "geodata", "ggspatial")
+packages_needed <- c("terra", "sf", "ggplot2", "dplyr", "tidyterra", "geodata", "ggspatial", "osmdata")
 not_installed <- packages_needed[!(packages_needed %in% installed.packages () [,"Package"])]
 if(length(not_installed)) install.packages(not_installed)
 
 print(paste(length(not_installed), "package had to be installed."))
 ```
+
+Additionally packages requires following data to run all the functions:
+
+- ‘ST_B10 surface temperature product’ (Landsat Collection 2 Level-2)
+  that covers the entire study area - can be downloaded via the \[USGS
+  Earthexplorer\] (<https://earthexplorer.usgs.gov/>)
+- \`CORINE Land Cover dataset’ - can be downloaded via the \[Land
+  Monitoring Service\]
+  (<https://land.copernicus.eu/en/products/corine-land-cover/clc2018>)
 
 ## Installation
 
@@ -62,6 +72,8 @@ pak::pak("Lara-A-O/uRban.analysis")
 | `get_city_boundary()` | Gets the boundary of a german city |
 | `get_LST()` | Calculates the Land Surface Temperature (LST) for the city out of a given Landsat Acquisition |
 | `LST_plotted()` | Creates a ready-to-use map of the LST |
+| `get_hotcoolspots()` | Creates a ready-to-use-map of the hotspots and coldspots |
+| `table_facilities_heat()` | Creates a list of vulnerable facilities within the hotspots |
 | `get_LULC()` | Prepares the corine dataset for the next steps |
 | `LULC_plotted()` | Creates a ready-to-use map of the Land Use/Land Cover (LULC) of the city |
 | `statistics_LULC_LST()` | Creates boxplots of the temperature distribution within the LULC Classes |
@@ -216,3 +228,15 @@ statistics_LULC_LST(lulc_data, lst_result)
 - Because the CORINE dataset is used, the package is limited to European
   cities. However, the principle of the functions can be adapted to
   national LULC Classifications outside of Europe.
+
+### Sources
+
+- Ballester, J./Quijal-Zamorano, M./Méndez Turrubiates, R. /Pegenaute,
+  F./Herrmann, F./Robine, J./Basagaña, X./Tonne, C./Antó, J.
+  /Achebak, H. (2023): Heat-related mortality in Europe during the
+  summer of 2022. In: Nature medicine 29(7), 1857–1866.
+
+-Bednar-Friedl, B./Biesbroek, R./Schmidt, D./Alexander, P./Børsheim,
+K./Carnicer, J./Georgopoulou, E./Haasnoot, M. (2023): Europe. In:
+Change, I.P.o.C. (Hrsg.) 2023: Climate Change 2022 – Impacts, Adaptation
+and Vulnerability: Cambridge University Press 1817 1928.
