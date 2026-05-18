@@ -47,11 +47,11 @@ print(paste(length(not_installed), "package had to be installed."))
 Additionally packages requires following data to run all the functions:
 
 - ‘ST_B10 surface temperature product’ (Landsat Collection 2 Level-2)
-  that covers the entire study area - can be downloaded via the \[USGS
-  Earthexplorer\] (<https://earthexplorer.usgs.gov/>)
-- \`CORINE Land Cover dataset’ - can be downloaded via the \[Land
-  Monitoring Service\]
-  (<https://land.copernicus.eu/en/products/corine-land-cover/clc2018>)
+  that covers the entire study area - can be downloaded via the [USGS
+  Earthexplorer](https://earthexplorer.usgs.gov/)
+- \`CORINE Land Cover dataset’ - can be downloaded via the [Land
+  Monitoring
+  Service](https://land.copernicus.eu/en/products/corine-land-cover/clc2018)
 
 ## Installation
 
