@@ -20,14 +20,15 @@ List with four elements: The calculated LST, the city name, the date and the cit
 Calculates the Land Surface Temperature within the given boundary based on a Landsat Scene.
 Used Formula: \verb{LST = ST_B10 x 0,00341802 +149 -273,15}
 Where
+
 -\verb{0,00341802} = Scaling Factor
 -\code{149}= Off-Set Value
 \verb{-273,15} = Kelvin to Celcius
 }
 \examples{
-get_LST <- (
+lst_result <- get_LST(
 st_b10_path = "C:/Users/LaraO/EAGLE_Master/1_Semester/New R-Package/LC08_L2SP_197025_20250620_20250627_02_T1_ST_B10.TIF",
 city = "Aachen", 
-date = as.Date(20-06-2025) )
+date = as.Date("2025-06-20") )
 
 }
