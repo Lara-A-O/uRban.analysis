@@ -51,10 +51,11 @@ You can install the development version of uRban.analysis from [GitHub](https://
 ``` r
 Package installation can be done directly by calling: 
 
-  pak::pak("Lara-A-O/uRban.analysis")
+  'devtools::install_github("Lara-A-O/uRban.analysis")'
 
 Alternatively you can also use: 
-  'devtools::install_github("Lara-A-O/uRban.analysis")'
+  pak::pak("Lara-A-O/uRban.analysis")
+  
 ```
 
 ## Functions
