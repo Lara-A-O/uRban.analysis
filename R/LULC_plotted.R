@@ -104,7 +104,7 @@ clc_lookup <- data.frame(
     label = clc_lookup_present$label) 
   
   
-    p <- ggplot() +
+    p <- ggplot2::ggplot() +
     tidyterra::geom_spatraster(data = clc_factor) +
 
     scale_fill_manual(

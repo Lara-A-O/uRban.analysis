@@ -18,7 +18,7 @@ LST_plotted <- function(lst_result) {
   city     <- lst_result$city
   date     <- lst_result$date
 
-   p <- ggplot() +
+   p <- ggplot2::ggplot() +
     tidyterra::geom_spatraster(data = LST) +
 
     scale_fill_distiller(

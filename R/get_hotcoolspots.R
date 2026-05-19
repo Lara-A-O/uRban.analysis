@@ -48,7 +48,7 @@ get_hotcoolspots <- function(lst_result, hot_quantile = 0.90, cold_quantile = 0.
   boundary_sf <- sf::st_as_sf(boundary)
 
   # Plot
-  p <- ggplot() +
+  p <- ggplot2::ggplot() +
     tidyterra::geom_spatraster(data = lst_factor) +
     scale_fill_manual(
       values = c(
