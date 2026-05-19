@@ -76,6 +76,7 @@ Alternatively you can also use:
 | `LST_plotted()` | Creates a ready-to-use map of the LST |
 | `get_hotcoolspots()` | Creates a ready-to-use-map of the hotspots and coldspots |
 | `table_facilities_heat()` | Creates a list of vulnerable facilities within the hotspots |
+| `map_facilities_heat()` | Creates a map of vulnerable facilities within the hotspots |
 | `get_LULC()` | Prepares the corine dataset for the next steps |
 | `LULC_plotted()` | Creates a ready-to-use map of the Land Use/Land Cover (LULC) of the city |
 | `statistics_LULC_LST()` | Creates boxplots of the temperature distribution within the LULC Classes |
