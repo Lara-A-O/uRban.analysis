@@ -8,16 +8,16 @@
 #'
 #' @examples 
 #' \dontrun{
-#' table_facilities(
+#' table_facilities_heat(
 #'   lst_result = result,
-#'   percentage = 0.10
+#'   percentile = 0.10
 #' )
 #' }
 #'
 #' @return A data frame with facility category and name.
 #' @export
 
-table_facilities <- function(lst_result, percentile = 0.9) {
+table_facilities_heat <- function(lst_result, percentile = 0.9) {
 
   LST  <- lst_result$LST
   city <- lst_result$city
@@ -114,12 +114,15 @@ table_facilities <- function(lst_result, percentile = 0.9) {
     return(invisible(NULL))
   }
 
-  #Output -> Table with the category and name of each facility remove the geometry
-  result_table <- facilities_in_hotspot |>
-    sf::st_drop_geometry() |>
-    dplyr::select(category, name) |>
-    dplyr::arrange(category, name)
-  # Geometrie entfernen, nach Kategorie und Name sortieren
+  #dataframe in preparation for map_facilities_heat
+  facilities_df <- facilities_in_hotspot |>
+  sf::st_transform(4326) |>
+  dplyr::mutate(
+    lon = sf::st_coordinates(geometry)[,1],
+    lat = sf::st_coordinates(geometry)[,2]
+  ) |>
+  sf::st_drop_geometry() |>
+  dplyr::select(category, name, lon, lat)
 
-  return(result_table)
+  return(facilities_df)
 }

@@ -12,19 +12,19 @@ Deaths in connections with heat are no longer a rarity, as the heat
 waves of recent years have shown. In the summer of 2022 ca. 62.862
 people have died because of the heat all over europe (Ballester et
 al. 2023:1857). With an global temperature increase of 1.5°C 30.000 heat
-related deaths can be expecected in Europe (Bednar-Friedl et
-al. 2023:1860). The health effects of heat waves are particulary severe
+related deaths can be expected in Europe (Bednar-Friedl et
+al. 2023:1860). The health effects of heat waves are particularly severe
 in cities. Cities have a high degree of soil sealing, often with little
 vegetation and high building density. For climate-resilient urban
 planning, it is important to know the heat distribution of cities in
-order to be able to conteract areas of intense heat troogh appropiate
+order to be able to counteract areas of intense heat trough appropiate
 measures f.ex. green roofs.
 
 This R-Package is designed to give decision-makers the ability to
 conduct a quick analysis of their city. Using a previously selected
 Landsat thermal image the Land Surface Temperature is plotted within the
 city boundaries. Furthermore, hotspots and coldspots can be identified.
-In addition the Land Cover of the city can be retreived and plotted
+In addition the Land Cover of the city can be retrieved and plotted
 based on the CORINE land cover dataset. So that the temperature
 distribution per Land Cover Class can be detected.
 
@@ -33,11 +33,11 @@ distribution per Land Cover Class can be detected.
 This package requires following packages:
 
 \-`dplyr` -`geodata` -`ggplot2` -`ggspatial` -`sf` -`terra` -`tidyterra`
--`osmdata`
+-`osmdata` -`leaflet`
 
 ``` r
 #Check if packages are missing and install automatically 
-packages_needed <- c("terra", "sf", "ggplot2", "dplyr", "tidyterra", "geodata", "ggspatial", "osmdata")
+packages_needed <- c("terra", "sf", "ggplot2", "dplyr", "tidyterra", "geodata", "ggspatial", "osmdata", "leaflet")
 not_installed <- packages_needed[!(packages_needed %in% installed.packages () [,"Package"])]
 if(length(not_installed)) install.packages(not_installed)
 
@@ -65,7 +65,6 @@ Package installation can be done directly by calling:
 
 Alternatively you can also use: 
   'devtools::install_github("Lara-A-O/uRban.analysis")'
-
 ```
 
 ## Functions
@@ -83,7 +82,7 @@ Alternatively you can also use:
 
 ## Example Workflow
 
-This is a example workflow on how to use the uRban.analysis package:
+This is an example workflow on how to use the uRban.analysis package:
 
 #### Getting the package started
 
@@ -100,6 +99,7 @@ library(ggspatial)
 library(sf)
 library(terra)
 library(tidyterra)
+library(leaflet)
 ```
 
 #### Getting the city boundary with `get_city_boundary()`
@@ -132,7 +132,7 @@ as the formula applies to the official USGS scaling factor and offset**
 lst_result <- get_LST(
  st_b10_path = "C:/Users/LaraO/EAGLE_Master/1_Semester/New R-Package/LC08_L2SP_197025_20250620_20250627_02_T1_ST_B10.TIF",
  city = "Aachen", 
- date = as.Date(20-06-2025) )
+ date = as.Date("2025-06-20") )
 ```
 
 #### Create a ready-to-use Map of the Land Surface Temperature with `LST_plotted()`
@@ -195,14 +195,31 @@ table_facilities(
 )
 ```
 
+#### Map heat vulnerable facilities within the hotspots with `map_facilities_heat`
+
+Based on the previous function `table_facilities_heat()`
+`map_facilities_heat()`creates an interactive leaflet map showing the
+affected facilities.
+
+``` r
+
+df <- table_facilities_heat(lst_result, percentile=0.9)
+
+map_facilities_heat(df)
+```
+
+**Output of `map_facilities_heat()`**
+
+<img src="man/figures/outputs/output_map_facilities_heat.png" width="700"/>
+
 #### Get the information about the Land Use and Land Cover of the city with `get_LULC()`
 
 A Land Use and Land Cover (LULC) Map can be useful to provide some
 context in regards of urban topics f.ex. heat. The Funktion `get_LULC()`
 serves as a preliminary step in the creation of a LULC map and further
-analysises. The $$CORINE Land Cover dataset$$
-(<https://land.copernicus.eu/en/products/corine-land-cover>) serves as
-the basis
+analysises. The [CORINE Land Cover
+dataset](https://land.copernicus.eu/en/products/corine-land-cover)
+serves as the basis
 
 ``` r
 lulc_result <- get_LULC(
@@ -265,4 +282,4 @@ statistics_LULC_LST(lulc_data, lst_result)
 -Bednar-Friedl, B./Biesbroek, R./Schmidt, D./Alexander, P./Børsheim,
 K./Carnicer, J./Georgopoulou, E./Haasnoot, M. (2023): Europe. In:
 Change, I.P.o.C. (Hrsg.) 2023: Climate Change 2022 – Impacts, Adaptation
-and Vulnerability: Cambridge University Press 1817 1928.
+and Vulnerability: Cambridge University Press 18171928.
