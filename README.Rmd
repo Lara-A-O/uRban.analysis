@@ -57,9 +57,13 @@ You can install the development version of uRban.analysis from [GitHub](https://
 
 ``` r
 Package installation can be done directly by calling: 
+
+  pak::pak("Lara-A-O/uRban.analysis")
+
+Alternatively you can also use: 
   'devtools::install_github("Lara-A-O/uRban.analysis")'
 
-pak::pak("Lara-A-O/uRban.analysis")
+
 ```
 
 ## Functions
@@ -154,6 +158,21 @@ get_hotcoolspots(
 **Output of `get_hotcoolspots()`**
 
 <img src="man/figures/outputs/extrema.png" width="700"/>
+
+#### Get the heat vulnerable facilities within the hotspots with `table_facilities_heat()`
+
+The elderly, children and people with chronic illnesses are particularly vulberable to heat. For a climate-resilient city, it is therfore particularly important to plan in such a way that social and medical facilities where members of these population groups gather are protected from extreme heat. The function `table_facilities_heat()`identifies which facilities, such as kindergardens, schools, nursing homes, assistance for people with people with disabilities and youth services are within LST hotspots. 
+
+Inspiration for this function is the map of the [Hessisches Landesamt für Naturschutz und Geologie](https://www.wiesbaden.de/medien/downloads/leben-in-wiesbaden/umwelt-naturschutz/Einrichtungen-und-Anzahl-der-heissen-Tage-in-der-Innenstadt.pdf)
+
+```{r, eval=FALSE}
+
+table_facilities(
+  lst_result =result, 
+  percentile = 0.9
+)
+
+```
 
 #### Get the information about the Land Use and Land Cover of the city with `get_LULC()`
 
