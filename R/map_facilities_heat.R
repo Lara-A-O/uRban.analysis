@@ -24,7 +24,12 @@ map_facilities_heat <- function(df) {
       lat = ~lat,
       popup = ~paste0("<b>", name, "</b><br>", category),
       color = pal (df$category),
-      radius = 6
+      radius = 6) %>%
+    addLegend(
+      position = "bottomright",
+      pal=pal, values= ~category,
+      title="Vulnerable Facilities within the Hotspots ", 
+      opacity = 1
     )
 }
 
