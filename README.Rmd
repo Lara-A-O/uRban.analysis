@@ -55,7 +55,6 @@ Package installation can be done directly by calling:
 
 Alternatively you can also use: 
   'devtools::install_github("Lara-A-O/uRban.analysis")'
-
 ```
 
 ## Functions
@@ -67,7 +66,7 @@ Alternatively you can also use:
 | `LST_plotted()` | Creates a ready-to-use map of the LST |
 | `get_hotcoolspots()` | Creates a ready-to-use-map of the hotspots and coldspots |
 | `table_facilities_heat()` | Creates a list of vulnerable facilities within the hotspots |
-| `map_facilities_heat()` | Creates a map of vulnerable facilities within the hotspots|
+| `map_facilities_heat()` | Creates a map of vulnerable facilities within the hotspots |
 | `get_LULC()` | Prepares the corine dataset for the next steps |
 | `LULC_plotted()` | Creates a ready-to-use map of the Land Use/Land Cover (LULC) of the city |
 | `statistics_LULC_LST()` | Creates boxplots of the temperature distribution within the LULC Classes |
@@ -225,4 +224,4 @@ statistics_LULC_LST(lulc_data, lst_result)
 
 -   Ballester, J./Quijal-Zamorano, M./Méndez Turrubiates, R. /Pegenaute, F./Herrmann, F./Robine, J./Basagaña, X./Tonne, C./Antó, J. /Achebak, H. (2023): Heat-related mortality in Europe during the summer of 2022. In: Nature medicine 29(7), 1857–1866.
 
--Bednar-Friedl, B./Biesbroek, R./Schmidt, D./Alexander, P./Børsheim, K./Carnicer, J./Georgopoulou, E./Haasnoot, M. (2023): Europe. In: Change, I.P.o.C. (Hrsg.) 2023: Climate Change 2022 – Impacts, Adaptation and Vulnerability: Cambridge University Press 18171928.
+- Bednar-Friedl, B./Biesbroek, R./Schmidt, D./Alexander, P./Børsheim, K./Carnicer, J./Georgopoulou, E./Haasnoot, M. (2023): Europe. In: Change, I.P.o.C. (Hrsg.) 2023: Climate Change 2022 – Impacts, Adaptation and Vulnerability: Cambridge University Press 18171928.

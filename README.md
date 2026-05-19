@@ -280,7 +280,7 @@ statistics_LULC_LST(lulc_data, lst_result)
   /Achebak, H. (2023): Heat-related mortality in Europe during the
   summer of 2022. In: Nature medicine 29(7), 1857–1866.
 
--Bednar-Friedl, B./Biesbroek, R./Schmidt, D./Alexander, P./Børsheim,
-K./Carnicer, J./Georgopoulou, E./Haasnoot, M. (2023): Europe. In:
-Change, I.P.o.C. (Hrsg.) 2023: Climate Change 2022 – Impacts, Adaptation
-and Vulnerability: Cambridge University Press 18171928.
+- Bednar-Friedl, B./Biesbroek, R./Schmidt, D./Alexander, P./Børsheim,
+  K./Carnicer, J./Georgopoulou, E./Haasnoot, M. (2023): Europe. In:
+  Change, I.P.o.C. (Hrsg.) 2023: Climate Change 2022 – Impacts,
+  Adaptation and Vulnerability: Cambridge University Press 18171928.
