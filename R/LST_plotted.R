@@ -14,6 +14,7 @@
 
 LST_plotted <- function(lst_result) {
   LST      <- lst_result$LST
+  names(LST) <- "LST"
   boundary <- lst_result$boundary
   city     <- lst_result$city
   date     <- lst_result$date
