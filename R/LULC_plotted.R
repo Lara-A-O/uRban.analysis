@@ -8,6 +8,7 @@
 #' city = "Aachen")
 #' }
 #' @return Plot of the LULC of the city based on ggplot2
+#' @importFrom grid unit
 #' @export
 
 
@@ -107,7 +108,7 @@ clc_lookup <- data.frame(
     p <- ggplot2::ggplot() +
     tidyterra::geom_spatraster(data = clc_factor) +
 
-    scale_fill_manual(
+    ggplot2::scale_fill_manual(
       values   = setNames(clc_lookup_present$color, clc_lookup_present$label),
       na.value = NA,
       name     = "Land Use Class"
@@ -115,27 +116,27 @@ clc_lookup <- data.frame(
     
   ggspatial::annotation_north_arrow(
       location    = "tr", which_north = "true",
-      height      = unit(0.5, "cm"), width = unit(0.5, "cm"),
-      pad_x       = unit(0.4, "cm"), pad_y = unit(0.5, "cm")
+      height      = grid::unit(0.5, "cm"), width = grid::unit(0.5, "cm"),
+      pad_x       = grid::unit(0.4, "cm"), pad_y = grid::unit(0.5, "cm")
     ) +
-  geom_sf(data = boundary_reproj, fill = NA, color = "black", linewidth = 0.6)+
+  ggplot2::geom_sf(data = boundary_reproj, fill = NA, color = "black", linewidth = 0.6)+
     ggspatial::annotation_scale(
       location   = "bl", width_hint = 0.3,
-      pad_x      = unit(0.6, "cm"), pad_y = unit(0.7, "cm"),
+      pad_x      = grid::unit(0.6, "cm"), pad_y = grid::unit(0.7, "cm"),
       style      = "ticks"
     ) +
 
-    labs(title = paste0("CORINE Land Cover – ", city)) +
+    ggplot2::labs(title = paste0("CORINE Land Cover – ", city)) +
 
-    theme_minimal(base_size = 12) +
-    theme(
-      panel.background = element_rect(fill = "#E5E5E5", color = NA),
-      plot.margin      = margin(20, 40, 40, 20),
-      plot.title       = element_text(face = "bold", size = 16),
+    ggplot2::theme_minimal(base_size = 12) +
+    ggplot2::theme(
+      panel.background = ggplot2::element_rect(fill = "#E5E5E5", color = NA),
+      plot.margin      = ggplot2::margin(20, 40, 40, 20),
+      plot.title       = ggplot2::element_text(face = "bold", size = 16),
       legend.position  = "right",
-      legend.title     = element_text(face = "bold"),
-      legend.key.size  = unit(0.4, "cm"),
-      legend.text      = element_text(size = 9)
+      legend.title     = ggplot2::element_text(face = "bold"),
+      legend.key.size  = grid::unit(0.4, "cm"),
+      legend.text      = ggplot2::element_text(size = 9)
     )
 
   return(p)

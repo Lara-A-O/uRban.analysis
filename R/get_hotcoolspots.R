@@ -12,6 +12,7 @@
 #' cold_quantile= 0.05)}
 #' 
 #' @return Plot of Hot and Cool Spots in the given city at the acquisition date 
+#' @importFrom grid unit
 #' @export
 
 
@@ -50,7 +51,7 @@ get_hotcoolspots <- function(lst_result, hot_quantile = 0.90, cold_quantile = 0.
   # Plot
   p <- ggplot2::ggplot() +
     tidyterra::geom_spatraster(data = lst_factor) +
-    scale_fill_manual(
+    ggplot2::scale_fill_manual(
       values = c(
         "Cold Spot" = "#4575b4",
         "Neutral"   = "#f7f7f7",
@@ -59,21 +60,21 @@ get_hotcoolspots <- function(lst_result, hot_quantile = 0.90, cold_quantile = 0.
       na.value = NA,
       name = "Thermal Class"
     ) +
-    geom_sf(data = boundary_sf, fill = NA, color = "black", linewidth = 0.6) +
+    ggplot2::geom_sf(data = boundary_sf, fill = NA, color = "black", linewidth = 0.6) +
     ggspatial::annotation_north_arrow(
       location = "tr", which_north = "true",
-      height = unit(0.5, "cm"), width = unit(0.5, "cm"),
-      pad_x = unit(0.4, "cm"), pad_y = unit(0.5, "cm")
+      height = grid::unit(0.5, "cm"), width = grid::unit(0.5, "cm"),
+      pad_x = grid::unit(0.4, "cm"), pad_y = grid::unit(0.5, "cm")
     ) +
     ggspatial::annotation_scale(
       location = "bl", width_hint = 0.3,
       pad_x = unit(0.6, "cm"), pad_y = unit(0.7, "cm"),
       style = "ticks"
     ) +
-    labs(title = paste0("Hot- and Coldspot Analysis – ", city),
+    ggplot2::labs(title = paste0("Hot- and Coldspot Analysis – ", city),
          subtitle = (date)) +
-    theme_minimal(base_size = 12) +
-    theme(
+    ggplot2::theme_minimal(base_size = 12) +
+    ggplot2::theme(
       panel.background = element_rect(fill = "#E5E5E5", color = NA),
       plot.margin = margin(20, 40, 40, 20),
       plot.title = element_text(face = "bold", size = 16),

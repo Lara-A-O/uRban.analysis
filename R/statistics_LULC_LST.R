@@ -34,9 +34,9 @@ statistics_LULC_LST <- function(lulc_data, lst_result) {
 
 
   p <- ggplot2::ggplot(df, aes(x = reorder(label, lst, median), y = lst, fill = label)) +
-    geom_boxplot(outlier.size = 0.3) +
-    scale_fill_manual(values = setNames(clc_lookup_present$color, clc_lookup_present$label)) +
-    coord_flip() +
+    ggplot2::geom_boxplot(outlier.size = 0.3) +
+    ggplot2::scale_fill_manual(values = setNames(clc_lookup_present$color, clc_lookup_present$label)) +
+    ggplot2::coord_flip() +
     labs(
       title = paste0("LST by Land Use Class – ", city, " (", date, ")"),
       x     = NULL,

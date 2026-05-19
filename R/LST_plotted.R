@@ -7,6 +7,7 @@
 #' LST_plotted (lst_result)}
 #' 
 #' @return Plot of the Land Surface Temperature 
+#' @importFrom grid unit
 #' @export
 
 
@@ -22,38 +23,38 @@ LST_plotted <- function(lst_result) {
    p <- ggplot2::ggplot() +
     tidyterra::geom_spatraster(data = LST) +
 
-    scale_fill_distiller(
+    ggplot2::scale_fill_distiller(
       palette = "Spectral",
       name = "Temperature (°C)",
       na.value = NA
     ) +
 
-    geom_sf(data = boundary, fill = NA, color = "white", linewidth = 0.6) +
+    ggplot2::geom_sf(data = boundary, fill = NA, color = "white", linewidth = 0.6) +
 
     ggspatial::annotation_north_arrow(
       location = "tr",
       which_north = "true",
-      height = unit(0.5, "cm"),
-      width  = unit(0.5, "cm"),
-      pad_x  = unit(0.4, "cm"),
-      pad_y  = unit(0.5, "cm")
+      height = grid::unit(0.5, "cm"),
+      width  = grid::unit(0.5, "cm"),
+      pad_x  = grid::unit(0.4, "cm"),
+      pad_y  = grid::unit(0.5, "cm")
     ) +
 
     ggspatial::annotation_scale(
       location   = "bl",
       width_hint = 0.3,
-      pad_x      = unit(0.6, "cm"),
-      pad_y      = unit(0.7, "cm"),
+      pad_x      = grid::unit(0.6, "cm"),
+      pad_y      = grid::unit(0.7, "cm"),
       style      = "ticks"
     ) +
 
-    labs(title = paste0("LST of ", city, " at ", date)) +
+    ggplot2::labs(title = paste0("LST of ", city, " at ", date)) +
 
-    theme_minimal(base_size = 12) +
-    theme(
-      panel.background = element_rect(fill = "#E5E5E5", color = NA),
-      plot.margin      = margin(20, 40, 40, 20),
-      plot.title       = element_text(face = "bold", size = 16),
+    ggplot2::theme_minimal(base_size = 12) +
+    ggplot2::theme(
+      panel.background = ggplot2::element_rect(fill = "#E5E5E5", color = NA),
+      plot.margin      = ggplot2::margin(20, 40, 40, 20),
+      plot.title       = ggplot2::element_text(face = "bold", size = 16),
       legend.position  = "right"
     )
 

@@ -17,6 +17,7 @@
 #' date = as.Date("2025-06-20") )
 #' 
 #' @return List with four elements: The calculated LST, the city name, the date and the city boundary
+#' 
 #' @export
 
 
