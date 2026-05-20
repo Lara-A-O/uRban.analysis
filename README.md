@@ -191,8 +191,8 @@ Geologie](https://www.wiesbaden.de/medien/downloads/leben-in-wiesbaden/umwelt-na
 
 ``` r
 
-table_facilities(
-  lst_result =result, 
+table_facilities_heat(
+  lst_result =lst_result, 
   percentile = 0.9
 )
 ```
@@ -252,7 +252,7 @@ results of `get_LULC()` and `get_LST()`creates on overview of the
 temperature distribution per class using boxplots.
 
 ``` r
-statistics_LULC_LST(lulc_data, lst_result)
+statistics_LULC_LST(lulc_result, lst_result)
 ```
 
 **Output of `statistics_LULC_LST()`**

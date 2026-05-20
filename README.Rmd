@@ -160,8 +160,8 @@ Inspiration for this function is the map of the [Hessisches Landesamt für Natur
 
 ```{r, eval=FALSE}
 
-table_facilities(
-  lst_result =result, 
+table_facilities_heat(
+  lst_result =lst_result, 
   percentile = 0.9
 )
 
@@ -210,7 +210,7 @@ LULC_plotted(
 By analyzing the land surface temperature per Land Cover Class decision makers can identify where targeted adaption measures will have the greatest impact. The function `statistics_LULC_LST()` based on the results of `get_LULC()` and `get_LST()`creates on overview of the temperature distribution per class using boxplots.
 
 ```{r, eval=FALSE}
-statistics_LULC_LST(lulc_data, lst_result)
+statistics_LULC_LST(lulc_result, lst_result)
 ```
 
 **Output of `statistics_LULC_LST()`** <img src="man/figures/outputs/LST_by_LULC.png" width="700"/>
